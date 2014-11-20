@@ -79,10 +79,11 @@ module SimpleCalendar
         events.select do |e|
           current_date == e.send(:simple_calendar_start_time).in_time_zone(@timezone).to_date
           puts "! ! !"
-          puts :simple_calendar_start_time
           puts current_date
-          puts @timezone
+          puts e.send(:simple_calendar_start_time)
+          puts e.send(:simple_calendar_start_time).in_time_zone(@timezone)
           puts "! ! !"
+          return current_date
         end.sort_by(&:simple_calendar_start_time)
       else
         events
