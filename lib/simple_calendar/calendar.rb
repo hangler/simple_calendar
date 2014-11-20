@@ -9,6 +9,10 @@ module SimpleCalendar
       @events       = opts.delete(:events) { [] }
       @timezone     = opts.fetch(:timezone, Time.zone)
 
+      puts "* * *"
+      puts @timezone
+      puts "* * *"
+
       opts.reverse_merge!(
         header: {class: "calendar-header"},
         previous_link: default_previous_link,
@@ -74,6 +78,11 @@ module SimpleCalendar
       if events.any? && events.first.respond_to?(:simple_calendar_start_time)
         events.select do |e|
           current_date == e.send(:simple_calendar_start_time).in_time_zone(@timezone).to_date
+          puts "! ! !"
+          puts :simple_calendar_start_time
+          puts current_date
+          puts @timezone
+          puts "! ! !"
         end.sort_by(&:simple_calendar_start_time)
       else
         events
