@@ -83,7 +83,6 @@ module SimpleCalendar
           puts e.send(:simple_calendar_start_time)
           puts e.send(:simple_calendar_start_time).in_time_zone(@timezone)
           puts "! ! !"
-          return current_date
         end.sort_by(&:simple_calendar_start_time)
       else
         events
